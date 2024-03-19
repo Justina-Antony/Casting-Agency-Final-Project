@@ -15,6 +15,7 @@ def create_app(test_config=None):
 # --------------------Movies----------------
 
 # Get all the movies
+
     @app.route('/movies')
     @requires_auth('get:movies')
     def getAllMovies(payload):
@@ -293,6 +294,8 @@ def create_app(test_config=None):
             "error": 500,
             "message": "Internal Server Error"
         }), 500
+
+    return app
 
 
 app = create_app()
