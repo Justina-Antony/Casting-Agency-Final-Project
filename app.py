@@ -1,16 +1,13 @@
-import os
 from flask import Flask, request, jsonify, abort
-from sqlalchemy import exc
-import json
 from flask_cors import CORS
 
-from .database.models import Actor, Movie, setup_db
-from .auth.auth import AuthError, requires_auth
+from auth.auth import AuthError, requires_auth
+from database.models import Actor, Movie, setup_db
+
 
 app = Flask(__name__)
 setup_db(app)
 CORS(app)
-
 
 
 # ROUTES

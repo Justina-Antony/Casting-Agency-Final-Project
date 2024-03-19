@@ -1,7 +1,6 @@
 import os
 from sqlalchemy import Column, Date, Numeric, String
 from flask_sqlalchemy import SQLAlchemy
-# import json
 
 database_path = os.environ['DATABASE_URL']
 if database_path.startswith("postgres://"):
