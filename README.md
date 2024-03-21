@@ -1,10 +1,18 @@
-# Coffee Shop Backend
+# Casting Agency Service
+
+## Overview
+
+The Casting Agency project is a web application designed to manage the information of actors and movies within a casting agency. It provides functionalities for adding, updating, deleting, and retrieving information about actors and movies. The project aims to streamline the management of casting-related data for efficient decision-making and organization within the agency.
 
 ## Getting Started
 
+1. The Casting Agency app is deployed to Render.
+Base URL:  https://casting-agency-final-project-1.onrender.com/
+2. Authentication: This application requires auth0 token for accessing the APIs.
+
 ### Installing Dependencies
 
-#### Python 3.7
+#### Python 3.12
 
 Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
 
@@ -14,7 +22,7 @@ We recommend working within a virtual environment whenever using Python for proj
 
 #### PIP Dependencies
 
-Once you have your virtual environment setup and running, install dependencies by naviging to the `/backend` directory and running:
+Once you have your virtual environment setup and running, install dependencies for running the application:
 
 ```bash
 pip install -r requirements.txt
@@ -26,18 +34,82 @@ This will install all of the required packages we selected within the `requireme
 
 - [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
 
-- [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
+- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use to handle the lightweight SQL database. You'll primarily work in `app.py`and can reference `models.py`.
 
-- [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
+- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross-origin requests from our frontend server.
 
-## Running the server
+### Set up the Database
 
-From within the `./src` directory first ensure you are working using your created virtual environment.
+## Models:
 
-Each time you open a new terminal session, run:
+- **Movie** with attributes title and release date
+- **Actor** with attributes name, age and gender
+
+Postgres database connection details and model classes in models.py
+
+## Endpoints:
+
+```python
+GET /actors 
+GET /movies
+----------------------
+GET /movies/<int:id>
+GET /actors/<int:id>
+-----------------------
+DELETE /actors/<int:id> 
+DELETE /movies/<int:id>
+-----------------------
+POST /actors 
+POST /movies
+-----------------------
+PATCH /actors/<int:id> 
+PATCH /movies/<int:id>
+
+These APIs are created in api.py file
+```
+
+### Setup Auth0
+
+1. Create new Auth0 Domain with the Algorithm
+2. Create API audience
+3. Create new API permissions:
+   - `get:movies`
+   - `get:actors`
+   - `post:movies`
+   - `post:actors`
+   - `patch:movies`
+   - `patch:actors`
+   - `delete:movies`
+   - `delete:actors`
+4. Create new roles for:
+   - Casting Assistant
+     - can `get:movies`
+     - can `get:actors`
+   - Casting Director
+     - can `get:movies`
+     - can `get:actors`
+     - can `post:movies`
+     - can `delete:movies`
+     - can `patch:movies`
+     - can `patch:actors`
+   - Executive Producer
+     - can perform all actions
+7. Test your endpoints from postman using the generated Bearer Token
+
+### Running the server
+
+Ensure working using your created virtual environment.
+
+Open a new terminal session, execute:
 
 ```bash
 export FLASK_APP=api.py;
+```
+
+To enable debug mode on:
+
+```bash
+export FLASK_DEBUG=1
 ```
 
 To run the server, execute:
@@ -46,42 +118,7 @@ To run the server, execute:
 flask run --reload
 ```
 
-The `--reload` flag will detect file changes and restart the server automatically.
+## Deploy to Render
 
-## Tasks
-
-### Setup Auth0
-
-1. Create a new Auth0 Account
-2. Select a unique tenant domain
-3. Create a new, single page web application
-4. Create a new API
-   - in API Settings:
-     - Enable RBAC
-     - Enable Add Permissions in the Access Token
-5. Create new API permissions:
-   - `get:drinks`
-   - `get:drinks-detail`
-   - `post:drinks`
-   - `patch:drinks`
-   - `delete:drinks`
-6. Create new roles for:
-   - Barista
-     - can `get:drinks-detail`
-     - can `get:drinks`
-   - Manager
-     - can perform all actions
-7. Test your endpoints with [Postman](https://getpostman.com).
-   - Register 2 users - assign the Barista role to one and Manager role to the other.
-   - Sign into each account and make note of the JWT.
-   - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
-   - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
-   - Run the collection and correct any errors.
-   - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
-
-### Implement The Server
-
-There are `@TODO` comments throughout the `./backend/src`. We recommend tackling the files in order and from top to bottom:
-
-1. `./src/auth/auth.py`
-2. `./src/api.py`
+ - Connect your Postgres with the Render
+ - Create web service for Casting Agency Service by passing Database URL.

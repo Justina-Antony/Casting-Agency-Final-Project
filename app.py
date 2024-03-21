@@ -19,43 +19,50 @@ def create_app(test_config=None):
     @app.route('/movies')
     @requires_auth('get:movies')
     def getAllMovies(payload):
-        movies = Movie.query.all()
+        try:
+            movies = Movie.query.all()
 
-        serialized_movies = []
-        for movie in movies:
-            serialized_movie = {
-                'id': movie.id,
-                'title': movie.title,
-                'release_date': movie.release_date.strftime('%Y-%m-%d') if movie.release_date else None
-            }
-            serialized_movies.append(serialized_movie)
+            serialized_movies = []
+            for movie in movies:
+                serialized_movie = {
+                    'id': movie.id,
+                    'title': movie.title,
+                    'release_date': movie.release_date.strftime('%Y-%m-%d') if movie.release_date else None
+                }
+                serialized_movies.append(serialized_movie)
 
-        return jsonify({
-            'success': True,
-            'movies': serialized_movies
-        }), 200
+            return jsonify({
+                'success': True,
+                'movies': serialized_movies
+            }), 200
+        
+        except:
+            abort(401)
 
     # Get movie by ID
 
     @app.route('/movies/<int:id>')
     @requires_auth('get:movies')
     def getByMovieId(payload, id):
-        movie = Movie.query.get(id)
+        try:
+            movie = Movie.query.get(id)
 
-        if not movie:
-            return jsonify(
-                {'success': False, 'error': 'Movie Not Found'}), 404
+            if not movie:
+                return jsonify(
+                    {'success': False, 'error': 'Movie Not Found'}), 404
 
-        serialized_movie = {
-            'id': movie.id,
-            'title': movie.title,
-            'release_date': movie.release_date.strftime('%Y-%m-%d') if movie.release_date else None
-        }
+            serialized_movie = {
+                'id': movie.id,
+                'title': movie.title,
+                'release_date': movie.release_date.strftime('%Y-%m-%d') if movie.release_date else None
+            }
 
-        return jsonify({
-            'success': True,
-            'movies': serialized_movie
-        }), 200
+            return jsonify({
+                'success': True,
+                'movies': serialized_movie
+            }), 200
+        except:
+            abort(401)
 
     # Create new Movie
 
@@ -130,45 +137,51 @@ def create_app(test_config=None):
     @app.route('/actors')
     @requires_auth('get:actors')
     def getAllActors(payload):
-        actors = Actor.query.all()
+        try:
+            actors = Actor.query.all()
 
-        serialized_actors = []
-        for actor in actors:
-            serialized_actor = {
-                'id': actor.id,
-                'name': actor.name,
-                'age': actor.age,
-                'gender': actor.gender
-            }
-            serialized_actors.append(serialized_actor)
+            serialized_actors = []
+            for actor in actors:
+                serialized_actor = {
+                    'id': actor.id,
+                    'name': actor.name,
+                    'age': actor.age,
+                    'gender': actor.gender
+                }
+                serialized_actors.append(serialized_actor)
 
-        return jsonify({
-            'success': True,
-            'actors': serialized_actors
-        }), 200
+            return jsonify({
+                'success': True,
+                'actors': serialized_actors
+            }), 200
+        except:
+            abort(401)
 
     # Get Actor By ID
 
     @app.route('/actors/<int:id>')
     @requires_auth('get:actors')
     def getByActorId(payload, id):
-        actor = Actor.query.get(id)
+        try:
+            actor = Actor.query.get(id)
 
-        if not actor:
-            return jsonify(
-                {'success': False, 'error': 'Actor Not Found'}), 404
+            if not actor:
+                return jsonify(
+                    {'success': False, 'error': 'Actor Not Found'}), 404
 
-        serialized_actor = {
-            'id': actor.id,
-            'name': actor.name,
-            'age': actor.age,
-            'gender': actor.gender
-        }
+            serialized_actor = {
+                'id': actor.id,
+                'name': actor.name,
+                'age': actor.age,
+                'gender': actor.gender
+            }
 
-        return jsonify({
-            'success': True,
-            'movies': serialized_actor
-        }), 200
+            return jsonify({
+                'success': True,
+                'movies': serialized_actor
+            }), 200
+        except:
+            abort(401)
 
     # Create new Actor details
 
