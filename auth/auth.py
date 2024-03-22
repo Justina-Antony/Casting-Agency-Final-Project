@@ -11,6 +11,7 @@ API_AUDIENCE = 'casting-agency-api'
 
 # AuthError Exception
 
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -37,6 +38,7 @@ def get_token_auth_header():
                         "description": "Authorization token must have bearer keyword"}, 401)
 
     return headers_parts[1]
+
 
 def check_permissions(permission, payload):
 

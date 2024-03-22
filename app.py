@@ -5,9 +5,12 @@ from auth.auth import AuthError, requires_auth
 from database.models import Actor, Movie, setup_db
 
 
-def create_app(test_config=None):
+def create_app(active=True, test_config=None):
     app = Flask(__name__)
-    setup_db(app)
+    with app.app_context():
+        if active:
+            setup_db(app)
+    # setup_db(app)
     CORS(app)
 
 
@@ -35,7 +38,7 @@ def create_app(test_config=None):
                 'success': True,
                 'movies': serialized_movies
             }), 200
-        
+
         except:
             abort(401)
 
@@ -73,6 +76,12 @@ def create_app(test_config=None):
             body = request.json
             new_movie = Movie(title=body['title'],
                               release_date=body['release_date'])
+            
+            if new_movie.title == '' or new_movie.release_date == '':
+                return jsonify(
+                    {'success': False, 'error': 'Movie name cannot be null'}), 422
+                
+
             Movie.insert(new_movie)
 
             return jsonify({
@@ -107,7 +116,7 @@ def create_app(test_config=None):
         except Exception as e:
             print(e)
             return jsonify(
-                {'success': False, 'error': 'Failed to update movie'}), 500
+                {'success': False, 'error': 'Failed to update movie'}), 404
 
     # Delete the created movie
 

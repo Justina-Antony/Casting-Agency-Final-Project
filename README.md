@@ -88,8 +88,8 @@ These APIs are created in api.py file
    - Casting Director
      - can `get:movies`
      - can `get:actors`
-     - can `post:movies`
-     - can `delete:movies`
+     - can `post:actors`
+     - can `delete:actors`
      - can `patch:movies`
      - can `patch:actors`
    - Executive Producer
@@ -122,3 +122,32 @@ flask run --reload
 
  - Connect your Postgres with the Render
  - Create web service for Casting Agency Service by passing Database URL.
+
+ Below curl to execute the APIs via CURL or Postman.
+For example:
+
+```bash
+$ curl -X GET 'https://casting-agency-final-project-1.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X GET 'https://casting-agency-final-project-1.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X POST 'https://casting-agency-final-project-1.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X PATCH --request PATCH 'https://casting-agency-final-project-1.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X DELETE --request DELETE 'https://casting-agency-final-project-1.onrender.com/movies/1' \
+--header 'Authorization: Bearer <access-token>'
+
+$ curl -X GET 'https://casting-agency-final-project-1.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X GET 'https://casting-agency-final-project-1.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>' 
+$ curl -X POST 'https://casting-agency-final-project-1.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X PATCH --request PATCH 'https://casting-agency-final-project-1.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>'
+$ curl -X DELETE --request DELETE 'https://casting-agency-final-project-1.onrender.com/actors/1' \
+--header 'Authorization: Bearer <access-token>'
+```
+
+## Testing:
+
+Run our entire test case by running the following command at command line
+
+```python
+$ createdb castagency_test
+$ psql -U postgres postres
+$ python test_app.py
+```
