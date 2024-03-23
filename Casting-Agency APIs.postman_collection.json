@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "895b0cb1-63b4-4425-a4df-7ff46ebdb57c",
+		"name": "Casting-Agency APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14291400"
+	},
+	"item": [
+		{
+			"name": "GET movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function(){\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 500\", function(){\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwOTU5OTg2LCJleHAiOjE3MTA5NjcxODYsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.hxUfHHeVfaYYoGHsJEs8ZHVssAsS1M3_L_P0WRh4RdYcm29RAJQEkNa3YI_5-wlhvGi9WJ2RbEn1w09Ru6pToJf-KglFqcibcQx1KEucBObXrtAbWEXLrExvtScSXm2rXqdPrwqnHteDvfQrFw9kvlq6G7TQeqLuQxLEZNEdeDTPZ3eKjzII4aUtzHtWCQtuQBImj5e3VPaNJVld9-pE3QKovswalW2H_hNvw-opXsG_YPrHTkLief6Qu7kTng56UlUKjghFwSuVtD6TEufnyIqldzjNGvtm5VIznarVIEdGSEtzMjTBdlpr65P9W5N9XhcomoaWXpkwslTkuG-vxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/movies",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function(){\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwODY5NjQ3LCJleHAiOjE3MTA4NzY4NDcsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.FPSNJJdHcXcucFR3M96X59GUNdk2ZzctARm2iSqsPZlh2tG1qX3g15cFTUNheCVmaGS0O_cj97geFLE-jLd0ZFFC1oZbHGdKcsuqsElfFP16v-gQ_m1MqAD6u9OP5EvR1wpbcJHDoMXfw2sbAJBEV-BG5Vywb9TvZRdy7P374OZgocM3Vz6LRkiO9sHhmxuzoymBXu0DBrygya0bYLbqciJbKVAcdaMhvKeDsz2Noy5DnWOF6zNvUEiCZ9tCqRIcv-2dehVwRKRGtSfOJelkjL4Wf-7HmbJR4XrRlLFRO3Xo0KX_4zDB19i-Q5G4yTYtX4gAKKetf7rlRKex1OaBBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Top Story\",\r\n    \"release_date\": \"2021-01-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/movies",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 403\", function(){\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwOTU5OTg2LCJleHAiOjE3MTA5NjcxODYsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.hxUfHHeVfaYYoGHsJEs8ZHVssAsS1M3_L_P0WRh4RdYcm29RAJQEkNa3YI_5-wlhvGi9WJ2RbEn1w09Ru6pToJf-KglFqcibcQx1KEucBObXrtAbWEXLrExvtScSXm2rXqdPrwqnHteDvfQrFw9kvlq6G7TQeqLuQxLEZNEdeDTPZ3eKjzII4aUtzHtWCQtuQBImj5e3VPaNJVld9-pE3QKovswalW2H_hNvw-opXsG_YPrHTkLief6Qu7kTng56UlUKjghFwSuVtD6TEufnyIqldzjNGvtm5VIznarVIEdGSEtzMjTBdlpr65P9W5N9XhcomoaWXpkwslTkuG-vxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Favorite Story\",\r\n    \"release_date\": \"2021-01-09\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/movies/23",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 404\", function(){\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwOTU5OTg2LCJleHAiOjE3MTA5NjcxODYsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.hxUfHHeVfaYYoGHsJEs8ZHVssAsS1M3_L_P0WRh4RdYcm29RAJQEkNa3YI_5-wlhvGi9WJ2RbEn1w09Ru6pToJf-KglFqcibcQx1KEucBObXrtAbWEXLrExvtScSXm2rXqdPrwqnHteDvfQrFw9kvlq6G7TQeqLuQxLEZNEdeDTPZ3eKjzII4aUtzHtWCQtuQBImj5e3VPaNJVld9-pE3QKovswalW2H_hNvw-opXsG_YPrHTkLief6Qu7kTng56UlUKjghFwSuVtD6TEufnyIqldzjNGvtm5VIznarVIEdGSEtzMjTBdlpr65P9W5N9XhcomoaWXpkwslTkuG-vxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/movies/11",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Actors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function(){\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 500\", function(){\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwOTU5OTg2LCJleHAiOjE3MTA5NjcxODYsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.hxUfHHeVfaYYoGHsJEs8ZHVssAsS1M3_L_P0WRh4RdYcm29RAJQEkNa3YI_5-wlhvGi9WJ2RbEn1w09Ru6pToJf-KglFqcibcQx1KEucBObXrtAbWEXLrExvtScSXm2rXqdPrwqnHteDvfQrFw9kvlq6G7TQeqLuQxLEZNEdeDTPZ3eKjzII4aUtzHtWCQtuQBImj5e3VPaNJVld9-pE3QKovswalW2H_hNvw-opXsG_YPrHTkLief6Qu7kTng56UlUKjghFwSuVtD6TEufnyIqldzjNGvtm5VIznarVIEdGSEtzMjTBdlpr65P9W5N9XhcomoaWXpkwslTkuG-vxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/actors",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Actors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function(){\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwODY5NjQ3LCJleHAiOjE3MTA4NzY4NDcsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.FPSNJJdHcXcucFR3M96X59GUNdk2ZzctARm2iSqsPZlh2tG1qX3g15cFTUNheCVmaGS0O_cj97geFLE-jLd0ZFFC1oZbHGdKcsuqsElfFP16v-gQ_m1MqAD6u9OP5EvR1wpbcJHDoMXfw2sbAJBEV-BG5Vywb9TvZRdy7P374OZgocM3Vz6LRkiO9sHhmxuzoymBXu0DBrygya0bYLbqciJbKVAcdaMhvKeDsz2Noy5DnWOF6zNvUEiCZ9tCqRIcv-2dehVwRKRGtSfOJelkjL4Wf-7HmbJR4XrRlLFRO3Xo0KX_4zDB19i-Q5G4yTYtX4gAKKetf7rlRKex1OaBBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Surya\",\r\n    \"age\": 37,\r\n    \"gender\": \"male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/actors",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Actors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 403\", function(){\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwODY5NjQ3LCJleHAiOjE3MTA4NzY4NDcsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.FPSNJJdHcXcucFR3M96X59GUNdk2ZzctARm2iSqsPZlh2tG1qX3g15cFTUNheCVmaGS0O_cj97geFLE-jLd0ZFFC1oZbHGdKcsuqsElfFP16v-gQ_m1MqAD6u9OP5EvR1wpbcJHDoMXfw2sbAJBEV-BG5Vywb9TvZRdy7P374OZgocM3Vz6LRkiO9sHhmxuzoymBXu0DBrygya0bYLbqciJbKVAcdaMhvKeDsz2Noy5DnWOF6zNvUEiCZ9tCqRIcv-2dehVwRKRGtSfOJelkjL4Wf-7HmbJR4XrRlLFRO3Xo0KX_4zDB19i-Q5G4yTYtX4gAKKetf7rlRKex1OaBBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Surya V\",\r\n    \"age\": 35,\r\n    \"gender\": \"male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/actors/1",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Actors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 401\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 404\", function(){\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlgyUFRZQ1hfVXVvYU9WMXRLZzVjbiJ9.eyJpc3MiOiJodHRwczovL2ZybmQudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA4NDgxMTE5NDk3MTcyNjA1MTk2IiwiYXVkIjoiY2FzdGluZy1hZ2VuY3ktYXBpIiwiaWF0IjoxNzEwODY5NjQ3LCJleHAiOjE3MTA4NzY4NDcsInNjb3BlIjoiIiwiYXpwIjoiWnJSVFdMU0lwRHh5Wkh1bVJBa1NXb3E3TnplTXRsTGsiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.FPSNJJdHcXcucFR3M96X59GUNdk2ZzctARm2iSqsPZlh2tG1qX3g15cFTUNheCVmaGS0O_cj97geFLE-jLd0ZFFC1oZbHGdKcsuqsElfFP16v-gQ_m1MqAD6u9OP5EvR1wpbcJHDoMXfw2sbAJBEV-BG5Vywb9TvZRdy7P374OZgocM3Vz6LRkiO9sHhmxuzoymBXu0DBrygya0bYLbqciJbKVAcdaMhvKeDsz2Noy5DnWOF6zNvUEiCZ9tCqRIcv-2dehVwRKRGtSfOJelkjL4Wf-7HmbJR4XrRlLFRO3Xo0KX_4zDB19i-Q5G4yTYtX4gAKKetf7rlRKex1OaBBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://casting-agency-final-project-1.onrender.com/actors/1",
+					"protocol": "https",
+					"host": [
+						"casting-agency-final-project-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

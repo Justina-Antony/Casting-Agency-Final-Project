@@ -10,7 +10,6 @@ def create_app(active=True, test_config=None):
     with app.app_context():
         if active:
             setup_db(app)
-    # setup_db(app)
     CORS(app)
 
 
@@ -81,7 +80,6 @@ def create_app(active=True, test_config=None):
                 return jsonify(
                     {'success': False, 'error': 'Movie name cannot be null'}), 422
                 
-
             Movie.insert(new_movie)
 
             return jsonify({
@@ -139,7 +137,7 @@ def create_app(active=True, test_config=None):
         except:
             abort(422)
 
-    # --------------------------ACTOR--------------------------
+# --------------------------ACTOR--------------------------
 
     # Get all Actors details
 
@@ -202,6 +200,11 @@ def create_app(active=True, test_config=None):
             new_actor = Actor(name=body['name'],
                               age=body['age'],
                               gender=body['gender'])
+            
+            if new_actor.name == '' or new_actor.age is None or new_actor.gender == '':
+                return jsonify(
+                    {'success': False, 'error': 'Actor Details cannot be null'}), 422
+            
             Actor.insert(new_actor)
 
             return jsonify({
@@ -244,7 +247,7 @@ def create_app(active=True, test_config=None):
             }), 200
 
         except:
-            abort(500)
+            abort(404)
 
     # Delete the created Actor details
 

@@ -144,10 +144,12 @@ $ curl -X DELETE --request DELETE 'https://casting-agency-final-project-1.onrend
 
 ## Testing:
 
-Run our entire test case by running the following command at command line
+Run the entire test case by running the following command at command line
 
 ```python
-$ createdb castagency_test
-$ psql -U postgres postres
+$ createdb postgres_test
+$ psql -U postgres
 $ python test_app.py
 ```
+
+Postman collection for Casting Agency APIs has been attached.
