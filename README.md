@@ -24,8 +24,11 @@ We recommend working within a virtual environment whenever using Python for proj
 
 Once you have your virtual environment setup and running, install dependencies for running the application:
 
+- Use pip3 for Python3 
+- Use pip for Python2
+
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 This will install all of the required packages we selected within the `requirements.txt` file.
@@ -71,7 +74,7 @@ These APIs are created in api.py file
 ### Setup Auth0
 
 1. Create new Auth0 Domain with the Algorithm
-2. Create API audience
+2. Create API audience, enable RBAC controls and Add Permissions in the Access Token for the APIs in the settings
 3. Create new API permissions:
    - `get:movies`
    - `get:actors`
@@ -102,14 +105,23 @@ Ensure working using your created virtual environment.
 
 Open a new terminal session, execute:
 
+
 ```bash
+For Linux User:
 export FLASK_APP=api.py;
+
+For Windows User:
+set FLASK_APP=api.py;
 ```
 
 To enable debug mode on:
 
 ```bash
+For Linux User:
 export FLASK_DEBUG=1
+
+For Windows User:
+set FLASK_DEBUG=1
 ```
 
 To run the server, execute:
@@ -122,24 +134,197 @@ flask run --reload
 
  - Connect your Postgres with the Render
  - Create web service for Casting Agency Service by passing Database URL.
+ - Every APIs needs the permission to access it based on the specific roles[Executive producer, Casting Assistant, Casting Director]
 
  Below curl to execute the APIs via CURL or Postman.
 For example:
 
 ```bash
+Returns the list of all the movies along with the title and release date of the movie.
+
+Sample Curl:
 $ curl -X GET 'https://casting-agency-final-project-1.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "movies": [
+        {
+            "id": 1,
+            "release_date": "2023-04-17",
+            "title": "Great Dad"
+        },
+        {
+            "id": 2,
+            "release_date": "2021-01-09",
+            "title": "Favorite Story"
+        }
+    "success": true
+}
+```
+```bash
+Returns the specific movie based on the ID provided.
+
+Sample Curl:
 $ curl -X GET 'https://casting-agency-final-project-1.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "movies": {
+        "id": 1,
+        "release_date": "2023-04-17",
+        "title": "Great Dad"
+    },
+    "success": true
+}
+```
+```bash
+Returns the newly created movie along with the success message.
+
+Sample Curl:
 $ curl -X POST 'https://casting-agency-final-project-1.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "title": "The Horror Story",
+    "release_date": "2021-01-01"
+}
+
+Sample Response:
+{
+    "movies": "The Horror Story",
+    "success": true
+}
+```
+```bash
+Returns the updated movie details along with the success message.
+
+Sample Curl:
 $ curl -X PATCH --request PATCH 'https://casting-agency-final-project-1.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "title": "Favorite Story",
+    "release_date": "2021-01-09"
+}
+
+Sample Response:
+{
+    "movie": "Favorite Story",
+    "success": true
+}
+```
+```bash
+Returns the ID of the deleted movies along with the success message.
+
+Sample Curl:
 $ curl -X DELETE --request DELETE 'https://casting-agency-final-project-1.onrender.com/movies/1' \
 --header 'Authorization: Bearer <access-token>'
 
+Sample Response:
+{
+    "deleted_movie": 5,
+    "success": true
+}
+```
+```bash
+Returns the list of all the actors along with the ID, name, age and gender of the actor.
+
+Sample Curl:
 $ curl -X GET 'https://casting-agency-final-project-1.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "actors": [
+        {
+            "id": 1,
+            "age": "35",
+            "gender": "male",
+            "name": "Surya V"
+        },
+        {
+            "id": 2,
+            "age": "37",
+            "gender": "male",
+            "name": "karthik"
+        }
+    ],
+    "success": true
+}
+```
+```bash
+Returns the details of the specified actors along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
 $ curl -X GET 'https://casting-agency-final-project-1.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>' 
+
+Sample Response:
+{
+    "movies": {
+        "id": 1,
+        "age": "35",
+        "gender": "male",
+        "name": "Surya V"
+    },
+    "success": true
+}
+```
+```bash
+Returns the newly created actor details along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
 $ curl -X POST 'https://casting-agency-final-project-1.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "name": "Jo",
+    "age": 39,
+    "gender": "female"
+}
+
+Sample Response:
+{
+    "age": "39",
+    "gender": "female",
+    "name": "Jo",
+    "success": true
+}
+```
+```bash
+Returns the updated actor details along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
 $ curl -X PATCH --request PATCH 'https://casting-agency-final-project-1.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "name": "Surya",
+    "age": 35,
+    "gender": "male"
+}
+
+Sample Response:
+{
+    "actor": {
+        "age": "35",
+        "gender": "male",
+        "id": 1,
+        "name": "Surya"
+    },
+    "success": true
+}
+```
+```bash
+Returns the deleted actor ID along with the success message.
+
+Sample Curl:
 $ curl -X DELETE --request DELETE 'https://casting-agency-final-project-1.onrender.com/actors/1' \
 --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "deleted_actor": 1,
+    "success": true
+}
 ```
 
 ## Testing:
